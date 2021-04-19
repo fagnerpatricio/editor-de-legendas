@@ -109,8 +109,8 @@ def resize_subs(subs, res_x_dest=640):
         style.marginl = int(style.marginl * escala)
         style.marginr = int(style.marginr * escala)
         style.marginv = int(style.marginv * escala)
-        style.outline = int(style.outline * escala)
-        style.shadow = int(style.shadow * escala)
+        # style.outline = int(style.outline * escala)
+        # style.shadow = int(style.shadow * escala)
         style.spacing = int(style.spacing * escala)
 
     def n(v): return str("{:.3f}".format(float(v) * escala)) if v.replace('.', '').lstrip('-').isdigit() else v
@@ -188,6 +188,7 @@ def trocar_caractere(texto):
     # replacements = {"-":"~"}
 
     return "".join([replacements.get(c, c) for c in texto])
+
 
 def renomeia_arquivos_generico(dir_trabalho, lista_de_nomes_novos, lista_de_nomes_antigos, extensao='.mkv'):
     # Renomeando os arquivos
@@ -311,18 +312,18 @@ if __name__ == "__main__":
     try:
         # Create target Directory
         os.mkdir(argumentos.dir_trabalho + '/' + dirNameShow)
-        print("Directory ", argumentos.dir_trabalho + '/' + dirNameShow,  " Created ")
+        print("Directory ", argumentos.dir_trabalho + '/' + dirNameShow,  " Criado ")
     except FileExistsError:
-        print("Directory ", argumentos.dir_trabalho + '/' + dirNameShow,  " already exists")
+        print("Directory ", argumentos.dir_trabalho + '/' + dirNameShow,  " Já Existe")
 
     dirNameTemporada = "Season " + argumentos.temporada
 
     try:
         # Create target Directory
         os.mkdir(argumentos.dir_trabalho + '/' + dirNameShow + '/' + dirNameTemporada)
-        print("Directory ", argumentos.dir_trabalho + '/' + dirNameShow + '/' + dirNameTemporada,  " Created ")
+        print("Directory ", argumentos.dir_trabalho + '/' + dirNameShow + '/' + dirNameTemporada,  " Criado ")
     except FileExistsError:
-        print("Directory ", argumentos.dir_trabalho + '/' + dirNameShow + '/' + dirNameTemporada,  " already exists")
+        print("Directory ", argumentos.dir_trabalho + '/' + dirNameShow + '/' + dirNameTemporada,  " Já Existe ")
 
     for arquivo in nomes_novos_episodios:
         shutil.move(argumentos.dir_trabalho + '/' + LibAniHubSub.trocar_caractere(arquivo) + argumentos.extensao,
